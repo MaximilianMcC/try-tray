@@ -1,0 +1,38 @@
+// Colors
+// TODO: Put in another sass file
+$primary: #fb5607;
+$content: #e5e5e5;
+$text-light: #ffffff;
+$text-dark: #000000;
+
+@font-face {
+	font-family: 'intro-black';
+	src: url('../assets/font/IntroBlack.otf');
+}
+
+@font-face {
+	font-family: 'intro-light';
+	src: url('../assets/font/IntroLightCondensed.otf');
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	color: $text-dark;
+	font-family: 'intro-light', sans-serif;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'intro-black';
+	}
+}
+
+body, html {
+	height: 100dvh;
+
+	//! maybe remove this
+	div, section, header, footer {
+		height: 100%;
+	}
+}

@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "intro-black";
+  src: url("../assets/font/IntroBlack.otf");
+}
+@font-face {
+  font-family: "intro-light";
+  src: url("../assets/font/IntroLightCondensed.otf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #000000;
+  font-family: "intro-light", sans-serif;
+}
+* h1, * h2, * h3, * h4, * h5, * h6 {
+  font-family: "intro-black";
+}
+
+body, html {
+  height: 100dvh;
+}
+body div, body section, body header, body footer, html div, html section, html header, html footer {
+  height: 100%;
+}
+
+a {
+  background-color: #fb5607;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 5px 40px;
+  margin: 10px;
+  border-radius: 5px;
+  transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+}
+a:hover {
+  background-color: #cc4403;
+}/*# sourceMappingURL=elements.css.map */
