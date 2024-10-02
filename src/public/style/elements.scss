@@ -7,10 +7,26 @@ a {
 
 	padding: 5px 40px;
 	margin: 10px;
-	border-radius: 5px;
+	border-radius: $border-radius;
 
 	transition: cubic-bezier(0.215, 0.610, 0.355, 1) 0.5s;
 	&:hover {
 		background-color: darken($primary, 10%);
+	}
+}
+
+input {
+	padding: 5px;
+	width: 100%;
+
+	background-color: $content;
+	border-radius: $border-radius;
+	border: none;
+	outline: none;
+
+	font-size: 1rem;
+
+	&:focus {
+		outline: 2px solid $primary;
 	}
 }

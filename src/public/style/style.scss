@@ -1,9 +1,12 @@
-// Colors
+// Colors and general styles
 // TODO: Put in another sass file
 $primary: #fb5607;
 $content: #e5e5e5;
+$content-secondary: #efefef;
 $text-light: #ffffff;
 $text-dark: #000000;
+$background: #ffffff;
+$border-radius: 5px;
 
 @font-face {
 	font-family: 'intro-black';
@@ -24,15 +27,12 @@ $text-dark: #000000;
 	font-family: 'intro-light', sans-serif;
 
 	h1, h2, h3, h4, h5, h6 {
+		color: $primary;
 		font-family: 'intro-black';
 	}
 }
 
 body, html {
 	height: 100dvh;
-
-	//! maybe remove this
-	div, section, header, footer {
-		height: 100%;
-	}
+	font-size: 1.1rem;
 }

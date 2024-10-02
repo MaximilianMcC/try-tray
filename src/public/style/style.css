@@ -14,12 +14,11 @@
   font-family: "intro-light", sans-serif;
 }
 * h1, * h2, * h3, * h4, * h5, * h6 {
+  color: #fb5607;
   font-family: "intro-black";
 }
 
 body, html {
   height: 100dvh;
-}
-body div, body section, body header, body footer, html div, html section, html header, html footer {
-  height: 100%;
+  font-size: 1.1rem;
 }/*# sourceMappingURL=style.css.map */

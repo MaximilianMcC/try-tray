@@ -1,22 +1,42 @@
+@font-face {
+  font-family: "intro-black";
+  src: url("../assets/font/IntroBlack.otf");
+}
+@font-face {
+  font-family: "intro-light";
+  src: url("../assets/font/IntroLightCondensed.otf");
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: #000000;
+  font-family: "intro-light", sans-serif;
+}
+* h1, * h2, * h3, * h4, * h5, * h6 {
+  color: #fb5607;
+  font-family: "intro-black";
 }
 
 body, html {
   height: 100dvh;
+  font-size: 1.1rem;
 }
-body div, body section, body header, body footer, html div, html section, html header, html footer {
-  height: 100%;
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
 }
 
 nav {
   background-color: #e5e5e5;
-  box-shadow: 0px 3px 15px black;
   height: 70px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 999;
+  box-shadow: 0px 3px 10px gray;
 }
 nav .left, nav .right {
   display: flex;
@@ -25,4 +45,17 @@ nav .left, nav .right {
 }
 nav img {
   height: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 0.8fr;
+  height: 100%;
+}
+main .locations, main .preferences {
+  background-color: #ffffff;
+  padding: 25px 20px;
+}
+main .map {
+  background-color: magenta;
 }/*# sourceMappingURL=layout.css.map */

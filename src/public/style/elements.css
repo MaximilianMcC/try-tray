@@ -14,14 +14,13 @@
   font-family: "intro-light", sans-serif;
 }
 * h1, * h2, * h3, * h4, * h5, * h6 {
+  color: #fb5607;
   font-family: "intro-black";
 }
 
 body, html {
   height: 100dvh;
-}
-body div, body section, body header, body footer, html div, html section, html header, html footer {
-  height: 100%;
+  font-size: 1.1rem;
 }
 
 a {
@@ -35,4 +34,17 @@ a {
 }
 a:hover {
   background-color: #cc4403;
+}
+
+input {
+  padding: 5px;
+  width: 100%;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+input:focus {
+  outline: 2px solid #fb5607;
 }/*# sourceMappingURL=elements.css.map */
