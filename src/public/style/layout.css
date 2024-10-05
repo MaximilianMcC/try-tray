@@ -19,14 +19,21 @@
 }
 
 body, html {
-  height: 100dvh;
   font-size: 1.1rem;
+  height: 100%;
+}
+
+div, section {
+  height: 100%;
+}
+
+.hidden {
+  display: none;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
 }
 
 nav {
@@ -52,10 +59,26 @@ main {
   grid-template-columns: 1fr 3fr 0.8fr;
   height: 100%;
 }
-main .locations, main .preferences {
+main .locations, main .map, main .preferences {
+  display: flex;
+  flex-direction: column;
+}
+main .locations.locations, main .locations.preferences, main .map.locations, main .map.preferences, main .preferences.locations, main .preferences.preferences {
   background-color: #ffffff;
   padding: 25px 20px;
 }
-main .map {
+main .locations.locations .establishments, main .map.locations .establishments, main .preferences.locations .establishments {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+main .locations.locations .establishments .no-establishments, main .map.locations .establishments .no-establishments, main .preferences.locations .establishments .no-establishments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20%;
+  text-align: center;
+  height: 75%;
+}
+main .locations.map, main .map.map, main .preferences.map {
   background-color: magenta;
 }/*# sourceMappingURL=layout.css.map */

@@ -4,7 +4,6 @@
 body {
 	display: flex;
 	flex-direction: column;
-	height: 100dvh;
 }
 
 nav {
@@ -32,12 +31,34 @@ main {
 	grid-template-columns: 1fr 3fr 0.8fr;
 	height: 100%;
 
-	.locations, .preferences {
-		background-color: $background;
-		padding: 25px 20px;
-	}
+	.locations, .map, .preferences {
+		display: flex;
+		flex-direction: column;
 
-	.map {
-		background-color: magenta;
+		&.locations, &.preferences {
+			background-color: $background;
+			padding: 25px 20px;
+		}
+
+		&.locations {
+			.establishments {
+				flex-grow: 1;
+				overflow-y: auto;
+
+				.no-establishments {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: 20%;
+					text-align: center;
+					height: 75%;
+				}
+			}
+		}
+
+		&.map {
+			background-color: magenta;
+		}
 	}
 }
+

@@ -1,12 +1,15 @@
 @import "style";
 
-a {
+button, a {
 	background-color: $primary;
 	color: $text-light;
+	border: none;
+	
 	text-decoration: none;
+	text-align: center;
+	font-size: 1rem;
 
 	padding: 5px 40px;
-	margin: 10px;
 	border-radius: $border-radius;
 
 	transition: cubic-bezier(0.215, 0.610, 0.355, 1) 0.5s;
@@ -28,5 +31,42 @@ input {
 
 	&:focus {
 		outline: 2px solid $primary;
+	}
+}
+
+.establishment-card {
+	height: auto;
+	margin-top: 25px;
+	padding: 10px;
+	border-radius: $border-radius;
+
+	background-color: $content-secondary;
+
+	.info {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 10px;
+
+		a {
+			padding-left: 0;
+			padding-right: 0;
+			width: 100%;
+		}
+
+		.star-container {
+			width: 100%;
+			background-color: $dark-as-content;
+			border-radius: $border-radius;
+			
+			color: $primary;
+			p, i { color: inherit; }
+
+			font-size: 0.9rem;
+			white-space: nowrap;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 }
