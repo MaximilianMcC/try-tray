@@ -42,12 +42,18 @@ input {
 
 	background-color: $content-secondary;
 
+	.features li {
+		color: gray;
+
+		&.available { color: $text-dark; }
+	}
+
 	.info {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 10px;
 
-		a {
+		a, button {
 			padding-left: 0;
 			padding-right: 0;
 			width: 100%;

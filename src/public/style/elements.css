@@ -66,12 +66,18 @@ input:focus {
   border-radius: 5px;
   background-color: #efefef;
 }
+.establishment-card .features li {
+  color: gray;
+}
+.establishment-card .features li.available {
+  color: #000000;
+}
 .establishment-card .info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
 }
-.establishment-card .info a {
+.establishment-card .info a, .establishment-card .info button {
   padding-left: 0;
   padding-right: 0;
   width: 100%;
