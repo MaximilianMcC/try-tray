@@ -28,7 +28,7 @@ nav {
 
 main {
 	display: grid;
-	grid-template-columns: 1fr 3fr 0.8fr;
+	grid-template-columns: 1.2fr 3fr 1fr;
 	height: 100%;
 
 	.locations, .map, .preferences {
@@ -44,6 +44,7 @@ main {
 			.establishments {
 				flex-grow: 1;
 				overflow-y: auto;
+				margin-top: 25px;
 
 				.no-establishments {
 					display: flex;

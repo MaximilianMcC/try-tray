@@ -31,6 +31,13 @@ div, section {
   display: none;
 }
 
+input, textarea {
+  outline: none;
+}
+input:focus, textarea:focus {
+  outline: 2px solid #fb5607;
+}
+
 button, a {
   background-color: #fb5607;
   color: #ffffff;
@@ -52,19 +59,19 @@ input {
   background-color: #e5e5e5;
   border-radius: 5px;
   border: none;
-  outline: none;
   font-size: 1rem;
-}
-input:focus {
-  outline: 2px solid #fb5607;
 }
 
 .establishment-card {
   height: auto;
-  margin-top: 25px;
+  margin-bottom: 25px;
   padding: 10px;
   border-radius: 5px;
   background-color: #efefef;
+}
+.establishment-card h2 {
+  color: #000000;
+  font-size: 1.1rem;
 }
 .establishment-card .features li {
   color: gray;
@@ -95,4 +102,16 @@ input:focus {
 }
 .establishment-card .info .star-container p, .establishment-card .info .star-container i {
   color: inherit;
+}
+
+textarea {
+  border-radius: 5px;
+  border: none;
+  font-family: sans-serif;
+  background-color: #e5e5e5;
+  padding: 10px;
+  resize: none;
+  height: 45%;
+  min-height: 10rem;
+  margin-bottom: 30px;
 }/*# sourceMappingURL=elements.css.map */

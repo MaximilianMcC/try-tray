@@ -25,22 +25,22 @@ input {
 	background-color: $content;
 	border-radius: $border-radius;
 	border: none;
-	outline: none;
 
 	font-size: 1rem;
-
-	&:focus {
-		outline: 2px solid $primary;
-	}
 }
 
 .establishment-card {
 	height: auto;
-	margin-top: 25px;
+	margin-bottom: 25px;
 	padding: 10px;
 	border-radius: $border-radius;
 
 	background-color: $content-secondary;
+
+	h2 {
+		color: $text-dark;
+		font-size: 1.1rem;
+	}
 
 	.features li {
 		color: gray;
@@ -75,4 +75,21 @@ input {
 			align-items: center;
 		}
 	}
+}
+
+textarea {
+	border-radius: $border-radius;
+	border: none;
+	
+	//! temp
+	// TODO: Use another font
+	font-family: sans-serif;
+	background-color: $content;
+	padding: 10px;
+
+	resize: none;
+	height: 45%;
+	min-height: 10rem;
+
+	margin-bottom: 30px
 }

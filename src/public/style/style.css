@@ -29,4 +29,11 @@ div, section {
 
 .hidden {
   display: none;
+}
+
+input, textarea {
+  outline: none;
+}
+input:focus, textarea:focus {
+  outline: 2px solid #fb5607;
 }/*# sourceMappingURL=style.css.map */

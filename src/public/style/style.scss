@@ -45,3 +45,11 @@ div, section {
 .hidden {
 	display: none;
 }
+
+input, textarea {
+	outline: none;
+
+	&:focus {
+		outline: 2px solid $primary;
+	}
+}
