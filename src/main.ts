@@ -57,8 +57,17 @@ app.post("/add-establishment", (request, response) => {
 	response.send("Registered Establishment").status(200);
 });
 
+// Get all establishments within a certain distance from an address
+app.get("/establishments/:address/:searchDistance", (request, response) => {
+
+	// Get the address and the distance to
+	// search from the request parameters
+	const address: string = request.params.address;
+	const distance: number = parseInt(request.params.searchDistance);
+});
+
 // Start the server
-app.listen(port,() => console.log(`Server listening on port ${port}\nConnect via http://localhost:${port}\n\nAlso you might need to manually create ./data/json`));
+app.listen(port, () => console.log(`Server listening on port ${port}\nConnect via http://localhost:${port}\n\nAlso you might need to manually create ./data/json`));
 
 
 
