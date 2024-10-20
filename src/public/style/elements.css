@@ -38,7 +38,7 @@ input:focus, textarea:focus {
   outline: 2px solid #fb5607;
 }
 
-button, a {
+button:not(#map button), a:not(#map a) {
   background-color: #fb5607;
   color: #ffffff;
   border: none;
@@ -49,7 +49,7 @@ button, a {
   border-radius: 5px;
   transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
 }
-button:hover, a:hover {
+button:not(#map button):hover, a:not(#map a):hover {
   background-color: #cc4403;
 }
 

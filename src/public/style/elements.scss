@@ -1,6 +1,6 @@
 @import "style";
 
-button, a {
+button:not(#map button), a:not(#map a) {
 	background-color: $primary;
 	color: $text-light;
 	border: none;

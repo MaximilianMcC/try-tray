@@ -6,10 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Try A Tray</title>
 
+	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./style/style.css">
 	<link rel="stylesheet" href="./style/layout.css">
 	<link rel="stylesheet" href="./style/elements.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+	<!-- Javascript -->
+	<script src="./script/map.js" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0uCqlPPsIJ-KzKdBrVMsq7FNSBuiMf_I&callback=generateMap" async defer></script>
 
 </head>
 
@@ -116,8 +121,7 @@
 
 		<!-- Map showing the locations -->
 		<section class="map">
-			<h1>map</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos praesentium ducimus minima? Itaque id ducimus nihil deleniti vel quidem recusandae saepe commodi eveniet quisquam qui, quaerat quasi odio ratione excepturi.</p>
+			<div id="map"></div>
 		</section>
 
 		<!-- food preferences -->
