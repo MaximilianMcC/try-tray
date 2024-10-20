@@ -60,6 +60,9 @@ nav .left, nav .right {
 nav img {
   height: 100%;
 }
+nav a, nav button {
+  margin-right: 20px;
+}
 
 main {
   display: grid;
