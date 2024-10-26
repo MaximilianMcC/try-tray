@@ -41,7 +41,7 @@ const apiKey = Deno.env.get("GOOGLE_API_KEY");
 
 
 // Test
-app.get("/test", (request, response) => {
+app.get("/test", (request, response) => {	
 
 	response.send("<h1>kia ora</h1>");
 });
@@ -73,15 +73,8 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 	const address: string = request.params.address;
 	const searchRadius: number = parseInt(request.params.searchDistance);
 
-	// Use the google maps API to convert the address
-	// to latitude and longitude coordinates
-	const addressData = await httpGet(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`);
-	const targetCoordinates: Coordinate = {
-		latitude: parseFloat(addressData["results"][0]["geometry"]["location"]["lat"]),
-		longitude: parseFloat(addressData["results"][0]["geometry"]["location"]["long"])
-	}
-
-	console.log(targetCoordinates);
+	// Get the coordinates of the current place
+	const targetCoordinates: Coordinate = await coordinatesFromAddress(address);
 
 	// Get all of the establishments
 	// TODO: Filter by country/city thingy so we don't get every single one
@@ -103,7 +96,7 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 });
 
 // Get the distance between two points on a sphere (km)
-function haversineDistance(firstPosition: Coordinate, secondPosition: Coordinate) {
+function haversineDistance(firstPosition: Coordinate, secondPosition: Coordinate): number {
 	
 	// The radius of the earth in km
 	// TODO: Add interplanetary support
@@ -129,6 +122,24 @@ function haversineDistance(firstPosition: Coordinate, secondPosition: Coordinate
 	return distance;
 }
 
+async function coordinatesFromAddress(address: string): Promise<Coordinate> {
+	
+	// Encode the address for sending
+	address = encodeURIComponent(address);
+
+	// Make the request to the google maps API
+	const addressData = await httpGet(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`);
+
+	// Get the coordinates from the result
+	const coordinates: Coordinate = {
+		latitude: parseFloat(addressData["results"][0]["geometry"]["location"]["lat"]),
+		longitude: parseFloat(addressData["results"][0]["geometry"]["location"]["lng"])
+	}
+
+	// Return them
+	return coordinates;
+}
+
 // Start the server
 app.listen(port, () => console.log(`Server listening on port ${port}\nConnect via http://localhost:${port}\n\nAlso you might need to manually create ./data/json`));
 
@@ -147,7 +158,7 @@ function saveEstablishments(json: Establishment[]): void {
 	Deno.writeTextFileSync(path, jsonString);
 }
 
-async function httpGet(url:string) {
+async function httpGet(url: string) {
 	
 	try {
 		const response = await fetch(url);
