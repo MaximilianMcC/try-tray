@@ -1,61 +1,32 @@
-// Imports and whatnot
-// @deno-types="npm:@types/express@4.17.15"
-import express from "npm:express@4.18.2";
-import "https://deno.land/x/dotenv@v3.2.2/load.ts";
+const Express = require("express");
+const Path = require("path");
+const Config = require("./config.json");
 
 // Set up express
-const app = express();
-const port: number = 3000;
+const app = Express();
+const port = 3000;
 
 // Express middleware
-app.use(express.json());
+app.use(Express.json());
+app.use(Express.static(Path.join(__dirname, "public")));
 
 // Other setup stuff
 const path = "./data.json";
-interface Establishment {
-	name: string;
-	website: string;
-	rating: number;
 
-	customizable: boolean;
-	simpleItems: boolean;
-	menu: Dish[];
-	
-	address: string;
-	coordinates: Coordinate;
-}
-
-interface Dish {
-	name: string;
-	description: string;
-	foodItems: string[];
-}
-
-interface Coordinate {
-	latitude: number;
-	longitude: number;
-}
-  
 // Get the api key
-const apiKey = Deno.env.get("GOOGLE_API_KEY");
+const apiKey = Config["googleApiKey"];
 
-
-// Test
-app.get("/test", (request, response) => {	
-
-	response.send("<h1>kia ora</h1>");
-});
 
 // Add a new establishment
 app.post("/add-establishment", (request, response) => {
 
 	// Get the body payload with all of the
 	// establishments details
-	const establishment: Establishment = request.body;
+	const establishment = request.body;
   
 	// Retrieve the current JSON data and
 	// add the new establishment to it
-	const json: Establishment[] = getEstablishments();
+	const json = getEstablishments();
 	json.push(establishment);
   
 	// Write the updated JSON back to the file
@@ -70,15 +41,15 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 
 	// Get the address and the distance to
 	// search from the request parameters
-	const address: string = request.params.address;
-	const searchRadius: number = parseInt(request.params.searchDistance);
+	const address = request.params.address;
+	const searchRadius = parseInt(request.params.searchDistance);
 
 	// Get the coordinates of the current place
-	const targetCoordinates: Coordinate = await coordinatesFromAddress(address);
+	const targetCoordinates = await coordinatesFromAddress(address);
 
 	// Get all of the establishments
 	// TODO: Filter by country/city thingy so we don't get every single one
-	const establishments: Establishment[] = [];
+	const establishments = [];
 	getEstablishments().forEach(establishment => {
 		
 		// Get the distance between the current
@@ -96,11 +67,11 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 });
 
 // Get the distance between two points on a sphere (km)
-function haversineDistance(firstPosition: Coordinate, secondPosition: Coordinate): number {
+function haversineDistance(firstPosition, secondPosition) {
 	
 	// The radius of the earth in km
 	// TODO: Add interplanetary support
-	const radius: number = 6371;
+	const radius = 6378.14;
 
 	// Convert the coordinates from degrees to radians
 	// and also get their distances
@@ -122,7 +93,7 @@ function haversineDistance(firstPosition: Coordinate, secondPosition: Coordinate
 	return distance;
 }
 
-async function coordinatesFromAddress(address: string): Promise<Coordinate> {
+async function coordinatesFromAddress(address) {
 	
 	// Encode the address for sending
 	address = encodeURIComponent(address);
@@ -131,7 +102,7 @@ async function coordinatesFromAddress(address: string): Promise<Coordinate> {
 	const addressData = await httpGet(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`);
 
 	// Get the coordinates from the result
-	const coordinates: Coordinate = {
+	const coordinates = {
 		latitude: parseFloat(addressData["results"][0]["geometry"]["location"]["lat"]),
 		longitude: parseFloat(addressData["results"][0]["geometry"]["location"]["lng"])
 	}
@@ -145,20 +116,20 @@ app.listen(port, () => console.log(`Server listening on port ${port}\nConnect vi
 
 
 
-function getEstablishments(): Establishment[] {
+function getEstablishments() {
 
 	const json = Deno.readTextFileSync(path);
 	return JSON.parse(json);
 }
 
-function saveEstablishments(json: Establishment[]): void {
+function saveEstablishments(json) {
 
 	//? using tab indentation btw
 	const jsonString = JSON.stringify(json, null, "\t");
 	Deno.writeTextFileSync(path, jsonString);
 }
 
-async function httpGet(url: string) {
+async function httpGet(url) {
 	
 	try {
 		const response = await fetch(url);
