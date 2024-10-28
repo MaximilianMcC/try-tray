@@ -133,6 +133,8 @@ dist
 .vscode
 *temp*
 *debug*
-config.json
 
 *.docx
+
+config.json
+data.json
