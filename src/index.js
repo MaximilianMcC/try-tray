@@ -1,6 +1,8 @@
 const Express = require("express");
 const Path = require("path");
 const Config = require("./config.json");
+const axios = require("axios");
+const fs = require('fs');
 
 // Set up express
 const app = Express();
@@ -16,7 +18,7 @@ const path = "./data.json";
 // Get the api key
 const apiKey = Config["googleApiKey"];
 
-
+  
 // Add a new establishment
 app.post("/add-establishment", (request, response) => {
 
@@ -117,27 +119,22 @@ app.listen(port, () => console.log(`Server listening on port ${port}\nConnect vi
 
 
 function getEstablishments() {
-
-	const json = Deno.readTextFileSync(path);
+	const json = fs.readFileSync(path, 'utf8');
 	return JSON.parse(json);
 }
 
-function saveEstablishments(json) {
 
-	//? using tab indentation btw
+function saveEstablishments(json) {
 	const jsonString = JSON.stringify(json, null, "\t");
-	Deno.writeTextFileSync(path, jsonString);
+	fs.writeFileSync(path, jsonString, 'utf8');
 }
 
+// TODO: Don't use axios (node-fetch)
 async function httpGet(url) {
-	
 	try {
-		const response = await fetch(url);
-		const data = await response.json();
-		return data;
-
+		const response = await axios.get(url);
+		return response.data;
 	} catch (error) {
-		console.log(error);
-		return null;
+		console.error(`Error: ${error.message}`);
 	}
 }

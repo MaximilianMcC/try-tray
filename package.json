@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/MaximilianMcC/try-tray#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "axios": "^1.7.7",
+    "express": "^4.21.1",
+    "node-fetch": "^3.3.2"
   }
 }
