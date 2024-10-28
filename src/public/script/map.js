@@ -12,4 +12,3 @@ function generateMap() {
 	const mapElement = document.getElementById("map");
 	const map = new google.maps.Map(mapElement, mapSettings);
 }
-

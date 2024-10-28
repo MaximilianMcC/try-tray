@@ -13,8 +13,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 	<!-- Javascript -->
+	 <script src="./script/utils.js"></script>
 	<script src="./script/map.js" async defer></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0uCqlPPsIJ-KzKdBrVMsq7FNSBuiMf_I&callback=generateMap" async defer></script>
+	<script src="./script/search.js" defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0uCqlPPsIJ-KzKdBrVMsq7FNSBuiMf_I&callback=generateMap&loading=async" async defer></script>
 
 </head>
 
@@ -44,7 +46,7 @@
 
 			<!-- Location name input thing -->
 			<h1>location</h1>
-			<input type="text" placeholder="Enter your general area" autofocus>
+			<input id="locationInput" type="text" placeholder="Enter your general area" autofocus>
 
 			<!-- Found local establishments -->
 			<div class="establishments">

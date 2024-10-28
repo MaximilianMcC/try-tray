@@ -66,7 +66,6 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 		// Get the distance between the current
 		// establishment and the target address
 		const distance = haversineDistance(targetCoordinates, establishment["coordinates"]);
-		console.log(distance);
 		if (distance >= searchRadius) return;
 
 		// Add the establishment to the outgoing list
@@ -75,13 +74,12 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 	});
 
 	// Send back all of the establishments
+	console.log(establishments);
 	response.json(establishments).status(200);
 });
 
 // Get the distance between two points on a sphere (km)
 function haversineDistance(firstPosition, secondPosition) {
-
-	console.log(`Second position distance ${secondPosition}`);
 
 	// The radius of the earth in km
 	// TODO: Add interplanetary support
