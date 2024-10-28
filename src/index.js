@@ -20,11 +20,20 @@ const apiKey = Config["googleApiKey"];
 
   
 // Add a new establishment
-app.post("/add-establishment", (request, response) => {
+app.post("/add-establishment", async (request, response) => {
 
 	// Get the body payload with all of the
 	// establishments details
-	const establishment = request.body;
+	let establishment = request.body;
+	
+	// Get the coordinates of the location
+	// because the person registering them
+	// probably doesn't know what they are
+	const coordinates = await coordinatesFromAddress(establishment["address"]);
+	establishment["coordinates"] = {
+		latitude: coordinates["latitude"],
+		longitude: coordinates["longitude"]
+	}
   
 	// Retrieve the current JSON data and
 	// add the new establishment to it
@@ -56,8 +65,9 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 		
 		// Get the distance between the current
 		// establishment and the target address
-		const distance = haversineDistance(targetCoordinates, establishment.coordinates);
-		if (distance <= searchRadius) return;
+		const distance = haversineDistance(targetCoordinates, establishment["coordinates"]);
+		console.log(distance);
+		if (distance >= searchRadius) return;
 
 		// Add the establishment to the outgoing list
 		// so that it can be returned to the client
@@ -70,15 +80,17 @@ app.get("/establishments/:address/:searchDistance", async (request, response) =>
 
 // Get the distance between two points on a sphere (km)
 function haversineDistance(firstPosition, secondPosition) {
-	
+
+	console.log(`Second position distance ${secondPosition}`);
+
 	// The radius of the earth in km
 	// TODO: Add interplanetary support
-	const radius = 6378.14;
+	const radius = 6371.0072;
 
 	// Convert the coordinates from degrees to radians
 	// and also get their distances
-	const latitudeDistance = (secondPosition.latitude - firstPosition.latitude) * (Math.PI / 180);
-	const longitudeDistance = (secondPosition.longitude - firstPosition.longitude) * (Math.PI / 180);
+	const latitudeDistance = (secondPosition["latitude"] - firstPosition["latitude"]) * (Math.PI / 180);
+	const longitudeDistance = (secondPosition["longitude"] - firstPosition["longitude"]) * (Math.PI / 180);
 
 	// actual haversine formula thingy
 	const a = 
