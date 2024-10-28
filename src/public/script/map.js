@@ -1,14 +1,16 @@
+let map;
+
 function generateMap() {
 
 	// Set the location and whatnot
-	//? temp location is Auckland rn
-	const tempLocation = { lat: -36.8485, lng: 174.7633 };
+	//? Starting location is Auckland rn
+	const startingLocation = { lat: -36.8485, lng: 174.7633 };
 	const mapSettings = {
 		zoom: 10,
-		center: tempLocation
+		center: startingLocation
 	};
 
 	// Make the actual map
 	const mapElement = document.getElementById("map");
-	const map = new google.maps.Map(mapElement, mapSettings);
+	map = new google.maps.Map(mapElement, mapSettings);
 }

@@ -60,8 +60,16 @@ function addEstablishmentCard(establishment) {
 	document.querySelector(".cards").innerHTML += html;
 }
 
-// TODO: Put in map.js
+// TODO: Put in map.js maybe
 function addEstablishmentToMap(establishment) {
 	
-
+	// Make the marker thing
+	const marker = new google.maps.Marker({
+		title: establishment["name"],
+		position: {
+			lat: establishment["coordinates"]["latitude"],
+			lng: establishment["coordinates"]["longitude"]
+		},
+		map: map
+	});	
 }
